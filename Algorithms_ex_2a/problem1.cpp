@@ -1,5 +1,4 @@
 #include <iostream>
-#include <ctime>
 #include <cstdlib>
 #include <cmath>
 
@@ -56,6 +55,11 @@ int define_size() {
 int findMedianOfSorted(int *arr1, int *arr2, int size1, int size2, int low, int high) {
 
 
+	if (size1 == size2) {
+		cout << "array sizes must be different" << endl;
+		system("pause");
+	}
+
 	if (size1 > size2) {
 		findMedianOfSorted(arr2, arr1, size2, size1, low, high);
 	}
@@ -106,7 +110,6 @@ int findMedianOfSorted(int *arr1, int *arr2, int size1, int size2, int low, int 
 
 
 void main() {
-	srand(time(NULL));
 	int *arr1, *arr2, size1, size2;
 	int median;
 	size1 = define_size();
@@ -117,7 +120,7 @@ void main() {
 	printArray(arr2, size2);
 	
 
-	median = findMedianOfSorted(arr1, arr2, size1, size2, 0, size1);
+	median = findMedianOfSorted(arr1, arr2, size1, size2, 0, fmin(size1,size2));
 	cout << " the median is :" << median << endl;
 	system("pause");
 
