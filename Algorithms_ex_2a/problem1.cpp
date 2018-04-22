@@ -1,9 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <cmath>
-
-
-#define INF  9999;
+#include <climits>
 
 
 using namespace std;
@@ -80,10 +78,10 @@ int findMedianOfSorted(int *arr1, int *arr2, int size1, int size2, int low, int 
 
 
 		if (partitionA > size1 - 1) {
-			minRightA = INF;
+			minRightA = INT_MAX;
 		}
 		if (partitionA == 0) {
-			maxLeftA = -INF;
+			maxLeftA = INT_MIN;
 		}
 
 
@@ -122,6 +120,8 @@ void main() {
 
 	median = findMedianOfSorted(arr1, arr2, size1, size2, 0, fmin(size1,size2));
 	cout << " the median is :" << median << endl;
+
+	delete[] arr1, arr2;
 	system("pause");
 
 }
